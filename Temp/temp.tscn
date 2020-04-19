@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://World/World.gd" type="Script" id=1]
+[ext_resource path="res://World/World.tscn" type="PackedScene" id=2]
+
+[node name="ViewportContainer" type="ViewportContainer"]
+margin_right = 498.0
+margin_bottom = 474.0
+mouse_filter = 2
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 498, 474 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="World" type="Node2D" parent="Viewport" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
