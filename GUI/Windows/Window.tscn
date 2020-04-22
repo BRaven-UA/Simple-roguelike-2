@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GUI/Windows/window border.png" type="Texture" id=1]
 [ext_resource path="res://GUI/Windows/Window.gd" type="Script" id=2]
 [ext_resource path="res://GUI/Background_noise.tres" type="Texture" id=3]
 [ext_resource path="res://Temp/Aura.shader" type="Shader" id=4]
+[ext_resource path="res://GUI/GlowTemplate.png" type="Texture" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -20,7 +21,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Aura" type="ColorRect" parent="."]
+[node name="Aura" type="NinePatchRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -17.0
+margin_top = -17.0
+margin_right = 17.0
+margin_bottom = 17.0
+texture = ExtResource( 5 )
+draw_center = false
+region_rect = Rect2( 0, 0, 34, 34 )
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="Aura_1" type="ColorRect" parent="."]
 visible = false
 material = SubResource( 1 )
 anchor_right = 1.0

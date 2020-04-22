@@ -1,11 +1,12 @@
 extends Camera2D
 
 onready var tween = $Tween
+var last_position: Vector2
 
 func _unhandled_input(event):
 
 	if event.is_action_pressed("camera_reset"):
-		offset = Vector2.ZERO	# сброс смещения
+		offset = last_position
 
 	if event.is_action_pressed("camera_zoom_in"):
 		zoom *= 0.5
@@ -19,6 +20,7 @@ func _unhandled_input(event):
 		offset -= event.relative * zoom.x	# смещаем вьюпорт на дельту смещения мыши от предыдущей ее позиции
 
 func move_to(pos: Vector2):
+	last_position = pos
 	tween.stop_all()
 	tween.interpolate_property(self, "offset", offset, pos, 1.0, Tween.TRANS_QUINT, Tween.EASE_OUT)
 	tween.start()

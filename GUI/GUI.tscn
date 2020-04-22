@@ -24,11 +24,13 @@ width = 3
 script = ExtResource( 8 )
 caption = "World"
 description = ""
+debug_info = ""
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 8 )
 caption = "Test window"
 description = "Simple test"
+debug_info = "Veeeeeeery loooong text that should be wrapped or something terrible will happen :("
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -41,12 +43,10 @@ __meta__ = {
 [node name="TooltipLayer" type="CanvasLayer" parent="."]
 
 [node name="Tooltip" type="MarginContainer" parent="TooltipLayer"]
-visible = false
-modulate = Color( 1, 1, 0.447059, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -831.0
-margin_bottom = -574.0
+margin_right = -896.0
+margin_bottom = -503.0
 rect_min_size = Vector2( 128, 26 )
 mouse_filter = 2
 script = ExtResource( 6 )
@@ -55,9 +55,9 @@ __meta__ = {
 }
 
 [node name="Background" type="TextureRect" parent="TooltipLayer/Tooltip"]
-self_modulate = Color( 0.129412, 0.129412, 0.129412, 0.882353 )
-margin_right = 193.0
-margin_bottom = 60.0
+self_modulate = Color( 0.294118, 0.298039, 0, 0.968627 )
+margin_right = 128.0
+margin_bottom = 97.0
 mouse_filter = 2
 texture = ExtResource( 11 )
 expand = true
@@ -67,8 +67,9 @@ __meta__ = {
 }
 
 [node name="Border" type="NinePatchRect" parent="TooltipLayer/Tooltip"]
-margin_right = 193.0
-margin_bottom = 60.0
+self_modulate = Color( 1, 1, 0, 1 )
+margin_right = 128.0
+margin_bottom = 97.0
 texture = ExtResource( 3 )
 draw_center = false
 region_rect = Rect2( 3, 3, 3, 3 )
@@ -81,8 +82,8 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="TooltipLayer/Tooltip"]
-margin_right = 193.0
-margin_bottom = 60.0
+margin_right = 128.0
+margin_bottom = 97.0
 mouse_filter = 2
 custom_constants/margin_right = 6
 custom_constants/margin_top = 6
@@ -92,8 +93,8 @@ custom_constants/margin_bottom = 6
 [node name="Content" type="VBoxContainer" parent="TooltipLayer/Tooltip/MarginContainer"]
 margin_left = 6.0
 margin_top = 6.0
-margin_right = 187.0
-margin_bottom = 54.0
+margin_right = 122.0
+margin_bottom = 91.0
 mouse_filter = 2
 custom_constants/separation = 6
 __meta__ = {
@@ -101,7 +102,7 @@ __meta__ = {
 }
 
 [node name="Caption" type="Label" parent="TooltipLayer/Tooltip/MarginContainer/Content"]
-margin_right = 181.0
+margin_right = 116.0
 margin_bottom = 21.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 5 )
@@ -110,8 +111,9 @@ align = 1
 autowrap = true
 
 [node name="Delimeter" type="TextureRect" parent="TooltipLayer/Tooltip/MarginContainer/Content"]
+self_modulate = Color( 1, 1, 0, 1 )
 margin_top = 27.0
-margin_right = 181.0
+margin_right = 116.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 0, 1 )
 mouse_filter = 2
@@ -120,25 +122,36 @@ expand = true
 
 [node name="Description" type="Label" parent="TooltipLayer/Tooltip/MarginContainer/Content"]
 margin_top = 34.0
-margin_right = 181.0
+margin_right = 116.0
 margin_bottom = 48.0
-size_flags_vertical = 3
+size_flags_vertical = 1
 custom_fonts/font = ExtResource( 4 )
 text = "simple test"
-align = 3
+align = 1
+autowrap = true
+
+[node name="DebugInfo" type="Label" parent="TooltipLayer/Tooltip/MarginContainer/Content"]
+margin_top = 54.0
+margin_right = 116.0
+margin_bottom = 85.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0.556863, 1, 1 )
+text = "Position: (-1, -1)"
+align = 1
 autowrap = true
 
 [node name="Window_World" parent="." instance=ExtResource( 2 )]
-margin_left = 287.0
-margin_top = 76.0
-margin_right = 717.0
-margin_bottom = 426.0
+margin_left = 234.0
+margin_top = 21.0
+margin_right = 870.0
+margin_bottom = 588.0
 script = ExtResource( 9 )
 tooltip_data = SubResource( 3 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="Window_World/Content" index="0"]
-margin_right = 426.0
-margin_bottom = 346.0
+margin_right = 632.0
+margin_bottom = 563.0
 mouse_filter = 2
 stretch = true
 __meta__ = {
@@ -146,26 +159,29 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="Window_World/Content/ViewportContainer"]
-size = Vector2( 426, 346 )
+size = Vector2( 632, 563 )
 handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="World" parent="Window_World/Content/ViewportContainer/Viewport" instance=ExtResource( 1 )]
 
-[node name="Objects" parent="Window_World/Content/ViewportContainer/Viewport/World" index="1"]
-tile_data = PoolIntArray( -262147, 5, 0, -196611, 5, 0, -262139, 5, 0, -262137, 3, 0, -131073, 3, 0, -196605, 5, 0, -196600, 5, 0, -196599, 5, 0, -131069, 3, 0, -131068, 3, 0, -131067, 3, 0, -131063, 5, 0, -65535, 3, 0, -65533, 5, 0, -65527, 5, 0, 65531, 3, 0, 65534, 5, 0, 65535, 6, 0, 7, 3, 0, 131065, 5, 0, 131067, 3, 0, 65543, 3, 0, 196601, 5, 0, 196603, 3, 0, 131073, 5, 0, 196613, 5, 0, 196614, 3, 0, 196618, 5, 0, 327679, 3, 0, 262147, 3, 0, 262148, 3, 0, 262150, 3, 0, 393212, 3, 0, 327684, 3, 0, 327693, 0, 0, 458748, 3, 0, 458749, 3, 0, 393220, 3, 0, 393228, 0, 0, 393229, 0, 0, 524285, 5, 0, 524286, 5, 0, 458756, 3, 0 )
+[node name="Objects" parent="Window_World/Content/ViewportContainer/Viewport/World" index="2"]
+tile_data = PoolIntArray( -262147, 5, 0, -196611, 5, 0, -262139, 5, 0, -262137, 3, 0, -131073, 3, 0, -196605, 5, 0, -196600, 5, 0, -196599, 5, 0, -131069, 3, 0, -131068, 3, 0, -131067, 3, 0, -131063, 5, 0, -65535, 3, 0, -65533, 5, 0, -65527, 5, 0, 65531, 3, 0, 65534, 5, 0, 65535, 6, 0, 7, 3, 0, 131065, 5, 0, 131067, 3, 0, 65537, 5, 0, 65543, 3, 0, 196601, 5, 0, 196603, 3, 0, 131073, 5, 0, 196613, 5, 0, 196614, 3, 0, 196618, 5, 0, 327679, 3, 0, 262147, 3, 0, 262148, 3, 0, 262150, 3, 0, 393212, 3, 0, 327684, 3, 0, 327693, 0, 0, 458748, 3, 0, 458749, 3, 0, 393220, 3, 0, 393228, 0, 0, 393229, 0, 0, 524285, 5, 0, 524286, 5, 0, 458756, 3, 0 )
+
+[node name="OnTopArea" parent="Window_World/Content/ViewportContainer/Viewport/World" index="3"]
+tile_data = PoolIntArray( 0, 4, 0 )
 
 [node name="Window_Test" parent="." instance=ExtResource( 2 )]
-margin_left = 67.446
-margin_top = 101.757
-margin_right = 159.447
-margin_bottom = 177.757
+margin_left = 65.6298
+margin_top = 120.762
+margin_right = 188.63
+margin_bottom = 239.762
 tooltip_data = SubResource( 4 )
 
 [node name="Label" type="Label" parent="Window_Test/Content" index="0"]
-margin_top = 29.0
-margin_right = 88.0
-margin_bottom = 43.0
+margin_top = 50.0
+margin_right = 119.0
+margin_bottom = 64.0
 text = "test"
 align = 1
 valign = 1

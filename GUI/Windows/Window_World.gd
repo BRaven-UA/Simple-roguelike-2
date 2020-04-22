@@ -7,5 +7,5 @@ func _content_input(event: InputEvent):
 	world_viewport.unhandled_input(event)
 #	tooltip_data.caption = String(world_viewport.get_mouse_position())
 #	print(world.get_global_mouse_position())
-	tooltip_data.caption = world.get_tile_name()
+	world.get_tile_info(tooltip_data)
 	._content_input(event)
