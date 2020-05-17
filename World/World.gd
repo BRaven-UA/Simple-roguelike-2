@@ -5,6 +5,8 @@ class_name GameWorld
 
 signal world_is_ready
 
+enum CELL_SIZE {OBJECT = 128, CHUNK = 1024}
+
 onready var chunks := $Chunks
 onready var explored_area := $ExploredArea
 onready var objects := $Objects
@@ -17,7 +19,14 @@ func _enter_tree():
 
 func _ready():
 	emit_signal("world_is_ready")
-#
+
+func object_on_cell(pos: Vector2) -> World_Object:
+#	var result
+	if pos != Vector2.INF:
+		for object in objects.get_children():
+			if object.position == pos:
+				return object
+	return null
 
 func get_tile_info(tooltip_data: TooltipData):
 	var mouse = get_global_mouse_position()
@@ -26,4 +35,3 @@ func get_tile_info(tooltip_data: TooltipData):
 	var tile_idx = explored_area.get_cellv(tile_pos)
 	var object_idx = objects.get_cellv(tile_pos)
 	tooltip_data.caption = objects.tile_set.tile_get_name(object_idx) if (tile_idx !=-1 and object_idx !=-1) else ""
-#	return tile_name

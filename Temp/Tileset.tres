@@ -1,7 +1,8 @@
 [gd_resource type="TileSet" load_steps=3 format=2]
 
 [ext_resource path="res://GUI/Background_noise.tres" type="Texture" id=1]
-[ext_resource path="res://World/World_objects.png" type="Texture" id=2]
+[ext_resource path="res://World/Objects/World_objects.png" type="Texture" id=2]
+
 
 [resource]
 2/name = "noise"

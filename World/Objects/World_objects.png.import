@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/World_objects.png-f6a240406bda4861492f524112415e1a.stex"
+path="res://.import/World_objects.png-79492a0817ce773a504f1fa58b55efab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/World_objects.png"
-dest_files=[ "res://.import/World_objects.png-f6a240406bda4861492f524112415e1a.stex" ]
+source_file="res://World/Objects/World_objects.png"
+dest_files=[ "res://.import/World_objects.png-79492a0817ce773a504f1fa58b55efab.stex" ]
 
 [params]
 

@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/Tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://World/World_camera.gd" type="Script" id=2]
+[ext_resource path="res://World/World_Camera.gd" type="Script" id=2]
 [ext_resource path="res://World/World.gd" type="Script" id=3]
 [ext_resource path="res://World/Screen as a mask.shader" type="Shader" id=4]
-[ext_resource path="res://Temp/World_object.tscn" type="PackedScene" id=5]
-[ext_resource path="res://World/Player.gd" type="Script" id=6]
-[ext_resource path="res://World/OnTopArea.gd" type="Script" id=7]
-[ext_resource path="res://World/Chunks.gd" type="Script" id=8]
+[ext_resource path="res://World/Objects/World_Object.gd" type="Script" id=5]
+[ext_resource path="res://World/Objects/World_Object_Player.gd" type="Script" id=6]
+[ext_resource path="res://World/World_OnTopArea.gd" type="Script" id=7]
+[ext_resource path="res://World/World_Chunks.gd" type="Script" id=8]
+[ext_resource path="res://World/Objects/World_Object_Creature.gd" type="Script" id=9]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -26,7 +27,7 @@ script = ExtResource( 8 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 128, 128 )
 format = 1
-tile_data = PoolIntArray( -1, 2, 0, -65536, 2, 0, -65535, 2, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0 )
+tile_data = PoolIntArray( -1, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0 )
 
 [node name="Objects" type="TileMap" parent="."]
 material = SubResource( 1 )
@@ -34,26 +35,29 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 128, 128 )
 cell_tile_origin = 1
 format = 1
-tile_data = PoolIntArray( -262147, 5, 0, -196611, 5, 0, -262139, 5, 0, -262137, 3, 0, -131073, 3, 0, -196605, 5, 0, -196600, 5, 0, -196599, 5, 0, -131069, 3, 0, -131068, 3, 0, -131067, 3, 0, -131063, 5, 0, -65533, 5, 0, -65527, 5, 0, 65531, 3, 0, 65534, 5, 0, 7, 3, 0, 131065, 5, 0, 131067, 3, 0, 65543, 3, 0, 196601, 5, 0, 196603, 3, 0, 196613, 5, 0, 196614, 3, 0, 196618, 5, 0, 327679, 3, 0, 262147, 3, 0, 262148, 3, 0, 262150, 3, 0, 393212, 3, 0, 327684, 3, 0, 327693, 0, 0, 458748, 3, 0, 458749, 3, 0, 393220, 3, 0, 393228, 0, 0, 393229, 0, 0, 524285, 5, 0, 524286, 5, 0, 458756, 3, 0 )
 
-[node name="Repair" parent="Objects" instance=ExtResource( 5 )]
+[node name="Repair" type="Node" parent="Objects"]
+script = ExtResource( 5 )
 object_tile = 6
 object_name = "Repair"
-tile_position = Vector2( -1, 0 )
+position = Vector2( -1, 0 )
 
-[node name="Insect" parent="Objects" instance=ExtResource( 5 )]
+[node name="Insect" type="Node" parent="Objects"]
+script = ExtResource( 9 )
 object_tile = 5
 object_name = "Insect"
-tile_position = Vector2( 1, 1 )
+position = Vector2( 1, 1 )
 
-[node name="Unknown" parent="Objects" instance=ExtResource( 5 )]
+[node name="Unknown" type="Node" parent="Objects"]
+script = ExtResource( 5 )
 object_name = "Unknown"
-tile_position = Vector2( 1, -1 )
+position = Vector2( 1, -1 )
 
-[node name="Insect2" parent="Objects" instance=ExtResource( 5 )]
+[node name="Insect2" type="Node" parent="Objects"]
+script = ExtResource( 9 )
 object_tile = 5
 object_name = "Insect"
-tile_position = Vector2( 1, 2 )
+position = Vector2( 2, 2 )
 
 [node name="OnTopArea" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -61,11 +65,10 @@ cell_size = Vector2( 128, 128 )
 format = 1
 script = ExtResource( 7 )
 
-[node name="Player" parent="OnTopArea" instance=ExtResource( 5 )]
+[node name="Player" type="Node" parent="OnTopArea"]
 script = ExtResource( 6 )
 object_tile = 4
 object_name = "Player"
-tile_position = Vector2( 0, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

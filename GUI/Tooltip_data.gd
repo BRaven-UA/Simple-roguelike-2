@@ -2,9 +2,10 @@ extends Resource
 
 class_name TooltipData
 
-export var caption := ""
-export var description := ""
-export var debug_info := ""
+export var caption:String
+export var description:String
+export var debug_info:String
+export var delay: float = 1.0
 
 func is_empty() -> bool:
 	var stack := caption + description

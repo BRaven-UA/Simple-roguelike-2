@@ -21,6 +21,9 @@ func _unhandled_input(event):
 
 func move_to(pos: Vector2):
 	last_position = pos
-	tween.stop_all()
-	tween.interpolate_property(self, "offset", offset, pos, 1.0, Tween.TRANS_QUINT, Tween.EASE_OUT)
+	tween.remove_all()
+	var tell = tween.tell()
+	if tell:
+		print(tell)
+	tween.interpolate_property(self, "offset", offset, pos, 1.0, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()

@@ -9,30 +9,45 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "World_Object",
+"class": "Creature",
+"language": "GDScript",
+"path": "res://World/Objects/World_Object_Creature.gd"
+}, {
 "base": "Control",
 "class": "GUI",
 "language": "GDScript",
 "path": "res://GUI/GUI.gd"
 }, {
+"base": "MarginContainer",
+"class": "GUI_Tooltip",
+"language": "GDScript",
+"path": "res://GUI/GUI_Tooltip.gd"
+}, {
 "base": "Control",
 "class": "GUI_Window",
 "language": "GDScript",
-"path": "res://GUI/Windows/Window.gd"
-}, {
-"base": "MarginContainer",
-"class": "GUI_tooltip",
-"language": "GDScript",
-"path": "res://GUI/Tooltip.gd"
+"path": "res://GUI/Windows/GUI_Window.gd"
 }, {
 "base": "Node2D",
 "class": "GameWorld",
 "language": "GDScript",
 "path": "res://World/World.gd"
 }, {
-"base": "World_Object",
+"base": "Node",
+"class": "Item",
+"language": "GDScript",
+"path": "res://World/Items/Item.gd"
+}, {
+"base": "Item",
+"class": "Item_BodyPart",
+"language": "GDScript",
+"path": "res://World/Items/Item_BodyPart.gd"
+}, {
+"base": "Creature",
 "class": "Player",
 "language": "GDScript",
-"path": "res://World/Player.gd"
+"path": "res://World/Objects/World_Object_Player.gd"
 }, {
 "base": "Resource",
 "class": "TooltipData",
@@ -42,13 +57,16 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "World_Object",
 "language": "GDScript",
-"path": "res://World/World_object.gd"
+"path": "res://World/Objects/World_Object.gd"
 } ]
 _global_script_class_icons={
+"Creature": "",
 "GUI": "",
+"GUI_Tooltip": "",
 "GUI_Window": "",
-"GUI_tooltip": "",
 "GameWorld": "",
+"Item": "",
+"Item_BodyPart": "",
 "Player": "",
 "TooltipData": "",
 "World_Object": ""
@@ -63,6 +81,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Global.gd"
+ItemDb="*res://World/Items/ItemDB.gd"
 
 [debug]
 
@@ -70,6 +89,8 @@ gdscript/warnings/enable=false
 
 [display]
 
+window/size/width=1200
+window/size/always_on_top=true
 window/stretch/aspect="expand"
 
 [editor_plugins]
